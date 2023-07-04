@@ -100,3 +100,33 @@ make down c=server   # delete server only
 make log            # log all containers
 make log c=server   # log server only
 ```
+
+### Test API
+
+#### Prerequisite
+
+- Replace the domain and port of the api 
+
+- Create User
+
+```
+curl --location --request POST 'http://{{DOMAIN}}:{{PORT}}/api/v1/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Test",
+    "email": "test@test.com",
+    "password": "12345678"
+}'
+```
+
+- Get Users
+
+```
+curl --location --request GET 'http://{{DOMAIN}}:{{PORT}}/api/v1/users'
+```
+
+- Get User By Id
+
+```
+curl --location --request GET 'http://{{DOMAIN}}:{{PORT}}/api/v1/users/f5784f22-cb47-4094-a943-abd303acac0a'
+```

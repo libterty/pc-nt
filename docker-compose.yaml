@@ -24,9 +24,12 @@ services:
       APPPORT: 7080
       DBHOST: mysql
       DBPORT: 3306
+      DBUSERNAME: root
+      DBPASSWORD: root
+      DBNAME: msql_project
     # Debug use
     ports:
-      - '7080:7080'
+      - '8080:7080'
     depends_on:
       - mysql
 
