@@ -6,6 +6,7 @@ export type FindUsersQuery = {
 
 export type CreateUserInput = {
   name: string
+  nickname?: string
   email: string
   password: string
 }

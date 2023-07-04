@@ -19,7 +19,10 @@ export class UserRepositoryImpl implements UserRepository {
   public async createUser(input: CreateUserInput): Promise<User> {
     const user = new User()
     user.name = input.name.trim()
-    user.email = input.email.toLowerCase()
+    if (input.nickname) {
+      user.nick_name = input.nickname.trim()
+    }
+    user.email = input.email.trim().toLowerCase()
     user.salt = await bcrypt.genSalt(10)
     user.password = await this.hashPassword(input.password, user.salt)
     return this.connection.getRepository(User).save(user)
@@ -39,6 +42,7 @@ export class UserRepositoryImpl implements UserRepository {
       .select([
         'users.id AS "id"',
         'users.name AS "name"',
+        'users.nick_name AS "nick_name"',
         'users.email AS "email"',
         'users.created_at AS "created_at"',
         'users.updated_at AS "updated_at"',
@@ -57,6 +61,7 @@ export class UserRepositoryImpl implements UserRepository {
       .select([
         'users.id AS "id"',
         'users.name AS "name"',
+        'users.nick_name AS "nick_name"',
         'users.email AS "email"',
         'users.created_at AS "created_at"',
         'users.updated_at AS "updated_at"',

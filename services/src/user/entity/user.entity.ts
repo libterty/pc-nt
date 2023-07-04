@@ -21,6 +21,9 @@ export default class User extends BaseEntity {
   @Column({ type: 'varchar', nullable: false, length: 255 })
   public name: string
 
+  @Column({ type: 'varchar', nullable: true, length: 255 })
+  public nick_name: string
+
   @Index({ unique: true, where: 'email IS NOT NULL AND deleted_at IS NULL' })
   @Column({ type: 'varchar', nullable: false })
   public email: string

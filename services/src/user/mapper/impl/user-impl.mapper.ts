@@ -8,6 +8,7 @@ export class UserMapperImpl {
     return {
       id: entity.id,
       name: entity.name,
+      nickName: entity.nick_name || null,
       email: entity.email,
       createdAt: entity.created_at.toISOString(),
       updatedAt: entity.updated_at.toISOString(),
